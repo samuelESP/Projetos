@@ -1,0 +1,197 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    color: #ffffff;
+  }
+  
+  body{
+    height: 100vh;
+    background-image: linear-gradient(45deg,#0a0a0a,#783b3b,#ff0000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    flex-direction: column;
+  }
+
+  .clock{
+    width: 400px;
+    height: 400px;
+    background-color: rgba(3, 3, 3, 0.8);
+    border-radius: 50%;
+    border: 2px solid rgb(199, 198, 198);
+    position: relative;
+    display: block;
+  }
+  
+  .clock .number {
+      --rotation: 0;/*Isso é uma vairiável que será usado no transform*/ 
+      transform: rotate(var(--rotation));/*Essa variável indica que a posição inicial de cada um dos elementos será a posição de 0 deg*/
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 500;
+    padding: 15px;
+  }
+
+  .clock .number.number-1 {
+    --rotation: 30deg;
+  }
+  .clock .number.number-2 {
+    --rotation: 60deg;
+  }
+  .clock .number.number-3 {
+    --rotation: 90deg;
+  }
+  .clock .number.number-4 {
+    --rotation: 120deg;
+  }
+  .clock .number.number-5 {
+    --rotation: 150deg;
+  }
+  .clock .number.number-6 {
+    --rotation: 180deg;
+  }
+  .clock .number.number-7 {
+    --rotation: 210deg;
+  }
+  .clock .number.number-8 {
+    --rotation: 240deg;
+  }
+  .clock .number.number-9 {
+    --rotation: 270deg;
+  }
+  .clock .number.number-10 {
+    --rotation: 300deg;
+  }
+  .clock .number.number-11 {
+    --rotation: 330deg;
+  }
+
+
+  /*PONTEIROS*/
+ 
+  .clock::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    z-index: 11;
+    background-color: rgb(255, 255, 255);
+    transform: translate(-50%, -50%);
+  }
+/*Todo ponteiro vai ter essas caracteristicas do .clock .hand*/
+  .clock .hand {
+    --rotation: 0;
+  
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    background-color: #000000;
+    z-index: 10;
+    transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));/*fazendo calc(var(--rotation) * 1deg) ele transforma o meu valor do ratate em deg*/
+    transform-origin: bottom;/*origen do meu ponteiro, ou seja, eixo que ele vai rodar*/
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .clock .hand.seconds {
+    width: 3px;
+    height: 40%;
+    background-color: #ff0000;
+  }
+  
+  .clock .hand.minutes {
+    width: 7px;
+    height: 35%;
+    background-color: #696969;
+  }
+  
+  .clock .hand.hours {
+    width: 10px;
+    height: 25%;
+    background-color: #684242;
+  }
+
+  .clock.analogico{
+    display: none;
+  }
+
+  .change{
+    color: #000000;
+    padding: 5px;
+    border: 0px;
+    border-radius: 15%;
+    font-size: 1rem;
+    cursor: pointer;
+    position: absolute;
+    top: 90%;
+    transition: all 1s;
+  }
+
+  .change:hover{
+    transform: scale(1.2);
+    background-color: #696969;
+  }
+
+  .relogio{
+    border: 1.3rem solid #0000ff;
+    border-radius: 16px;
+    padding: 20px;
+    background-color: #ffffff;
+    outline: 6px solid #000000;
+  }
+  .container{
+    position: relative;
+  }
+  .container::before{
+    content: "";
+    position: absolute;
+    width: 10rem;
+    height: 2rem;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: 3px solid #000000;
+    background-color: #ffff00;
+    top: -82px;
+    left: 0px;
+
+  }
+  .container::after{
+    content: "";
+    position: absolute;
+    width: 10rem;
+    height: 2rem;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: 3px solid #000000;
+    background-color: #eb1616;
+    top: -82px;
+    left: 11rem;
+
+  }
+
+
+  .relogio span {
+    font-size: 5.5rem;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 1rem;
+    color: #000000;
+    background-color: #acaaaa;
+  }
+
+  .relogio{
+    display: none;
+  }
+  .relogio.digital{
+    display: block;
+  }
+
+  
